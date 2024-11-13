@@ -1,0 +1,47 @@
+body{
+    font-family: Montserrat,sans-serif;
+}
+
+.site-header {
+    text-align: center;
+    width: 100px;
+    height: 65px;
+}
+
+.site-header > .container {
+    position: relative;
+    top: 50%;
+}
+
+header.site-header {
+    padding: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+}
+
+header.page-header {
+    background-size: cover;
+    background-position: 50% 50%; 
+    background-image: url(synthwave.jpg);
+    padding-top: 6rem;
+}
+
+h1 {
+    padding-bottom: 1em;
+    color: #fff;
+}
+
+a > span {
+    float:right;
+}
+
+.site-header > .container > a {
+    color: #fff;
+}
+
+.site-header > .container > a:hover {
+    text-decoration: none;
+    color: #fff;
+}
