@@ -1,10 +1,7 @@
 const canvas = document.getElementById('tetris');
 const context = canvas.getContext('2d');
-
 context.scale(20,20);
-
 let score = 0;
-
 function areaSweep() {
     let rowCount = 1;
     outer: for(let y = area.length - 1; y > 0; --y) {
@@ -22,7 +19,6 @@ function areaSweep() {
         rowCount *= 2;
     }
 }
-
 function collide(area, piece) {
     const [m, o] = [piece.matrix, piece.pos];
     for(let y = 0 ; y < m.length; ++y) {
@@ -35,7 +31,6 @@ function collide(area, piece) {
 
     return false;
 }
-
 function createPiece(type) {
     if(type === 'T') {
         return [
@@ -81,7 +76,6 @@ function createPiece(type) {
         ];
     }
 }
-
 function createMatrix(w,h) {
     const matrix = [];
     while(h--) {
@@ -89,7 +83,6 @@ function createMatrix(w,h) {
     }
     return matrix;
 }
-
 function draw() {
     context.fillStyle = "#000";
     context.fillRect(0, 0, canvas.width, canvas.height);
@@ -97,7 +90,6 @@ function draw() {
     drawMatrix(area, {x:0, y:0});
     drawMatrix(piece.matrix, piece.pos);
 }
-
 function drawMatrix(matrix, offset) {
     matrix.forEach((row, y) => {
         row.forEach((value, x) => {
@@ -108,7 +100,6 @@ function drawMatrix(matrix, offset) {
         });
     });
 }
-
 function merge(area, player) {
     player.matrix.forEach((row, y) => {
         row.forEach((value, x) => {
@@ -118,12 +109,10 @@ function merge(area, player) {
         })
     });
 }
-
 const piece = {
     pos: {x:0, y:0},
     matrix: null
 }
-
 function pieceReset() {
     const pieces = 'ILJOTSZ';
     piece.matrix = createPiece(pieces[pieces.length * Math.random() | 0]);
@@ -136,7 +125,6 @@ function pieceReset() {
         updateScore();
     }
 }
-
 function pieceDrop() {
     piece.pos.y++;
 
@@ -150,14 +138,12 @@ function pieceDrop() {
 
     dropCounter = 0;
 }
-
 function pieceMove(dir) {
     piece.pos.x += dir;
     if(collide(area,piece)) {
         piece.pos.x -= dir;
     }
 }
-
 function pieceRotate(dir) {
     let offset = 1;
     rotate(piece.matrix, dir);
@@ -172,7 +158,6 @@ function pieceRotate(dir) {
         }
     }
 }
-
 function rotate(matrix, dir) {
     for (let y = 0 ; y <  matrix.length ; ++y) {
         for (let x = 0 ; x < y ; ++x) {
@@ -185,38 +170,30 @@ function rotate(matrix, dir) {
             ];
         }
     }
-
     if(dir > 0) {
         matrix.forEach(row => row.reverse());
     }  else {
         matrix.reverse();
     }
 }
-
 let dropCounter = 0;
 let dropInterval = 1000;
-
 let lastTime = 0;
 function update(time = 0) {
 
     const deltaTime = time - lastTime;
     lastTime = time;
-
     dropCounter += deltaTime;
     if(dropCounter >= dropInterval) {
         pieceDrop();
     }
-
     draw();
     requestAnimationFrame(update);
 }
-
 function updateScore() {
     document.getElementById('score').innerText = score;
 }
-
 const area = createMatrix(12,20);
-
 const colors = [
     null,
     'purple',
@@ -227,7 +204,6 @@ const colors = [
     'green',
     'red'
   ];
-
 document.addEventListener('keydown', event => {
     if(event.keyCode === 37) {
         pieceMove(-1);
@@ -241,7 +217,6 @@ document.addEventListener('keydown', event => {
         pieceRotate(1);
     }
 });
-
 pieceReset();
 updateScore();
 update();
