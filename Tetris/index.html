@@ -1,24 +1,34 @@
 <!DOCTYPE html>
-    <head>
-        <title>Tetris</title>
-        <style>
-            body {
-                background: grey;
-                color: white;
-                font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-                font-size: 2em;
-                text-align: center;
-            }
-            canvas {
-                border: solid .2em white;
-                height: 80vh;
-            }
-        </style>
-    </head>
-    <body>
-        <div style="margin-bottom: 0.2em">Score : <span id="score"></span></div>
-        <canvas id="tetris" width="240" height="400"></canvas>
-        <script src="tetris.js"></script>
-        <div>Déplacement de la pièce : flèches du clavier <br>Q et F pour tourner la pièce </div>
-    </body>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tetris</title>
+</head>
+<body>
+    <div class="score">Score : 
+    <span id="score"></span>
+</div>
+    <canvas id="tetris" width="240" height="400"></canvas>
+    <script src="tetris.js"></script>
+    <div>Déplacement de la pièce : flèches du clavier <br>Q et F pour tourner la pièce </div>
+    </body>  
+</body>
+<style>
+    body {
+        background: grey;
+        color: white;
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        font-size: 2em;
+        text-align: center;
+    }
+    canvas {
+        border: solid .2em white;
+        height: 80vh;
+    }
+    .score{
+        margin-bottom: 0.2em
+    }
+    
+</style>
 </html>
